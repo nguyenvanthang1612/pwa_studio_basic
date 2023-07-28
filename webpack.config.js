@@ -1,8 +1,8 @@
-const { configureWebpack, graphQL } = require('@magento/pwa-buildpack');
+const {configureWebpack, graphQL} = require('@magento/pwa-buildpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const fs = require('fs');
-const { promisify } = require('util');
+const {promisify} = require('util');
 
 const {
     getMediaURL,
@@ -11,7 +11,7 @@ const {
     getPossibleTypes
 } = graphQL;
 
-const { DefinePlugin } = webpack;
+const {DefinePlugin} = webpack;
 // const { LimitChunkCountPlugin } = webpack.optimize;
 
 const getCleanTemplate = templateFile => {
@@ -60,7 +60,7 @@ module.exports = async env => {
 
     const mediaUrl = await getMediaURL();
     const storeConfigData = await getStoreConfigData();
-    const { availableStores } = await getAvailableStoresConfigData();
+    const {availableStores} = await getAvailableStoresConfigData();
     const writeFile = promisify(fs.writeFile);
 
     /**
@@ -69,7 +69,7 @@ module.exports = async env => {
      * given store code instead of the default one.
      */
     const availableStore = availableStores.find(
-        ({ store_code }) => store_code === process.env.STORE_VIEW_CODE
+        ({store_code}) => store_code === process.env.STORE_VIEW_CODE
     );
 
     global.MAGENTO_MEDIA_BACKEND_URL = mediaUrl;
@@ -127,6 +127,22 @@ module.exports = async env => {
         }),
         new HTMLWebpackPlugin(htmlWebpackConfig)
     ];
+
+    config.module.rules.push({
+        test: /\.s[ca]ss$/,
+        use: [
+            'style-loader',
+            {
+                loader: 'css-loader',
+                options: {
+                    modules: true,
+                    sourceMap: true,
+                    localIdentName: '[name]-[local]-[hash:base64:3]'
+                }
+            },
+            'sass-loader'
+        ]
+    });
 
     /*
     Commenting out this section until SSR is fully implemented
