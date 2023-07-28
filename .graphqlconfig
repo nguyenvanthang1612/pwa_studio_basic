@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "m246-pwa": {
+      "schemaPath": "merged-schema.v3.json",
+      "includes": [
+        "**/client-schema.graphql"
+      ],
+      "extensions": {
+        "endpoints": {
+          "default": "${env:MAGENTO_BACKEND_URL}/graphql"
+        }
+      }
+    }
+  }
+}
