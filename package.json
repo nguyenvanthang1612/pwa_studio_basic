@@ -28,7 +28,8 @@
     "@magento/venia-drivers": "src/drivers"
   },
   "dependencies": {
-    "@magento/pwa-buildpack": "~11.4.2"
+    "@magento/pwa-buildpack": "~11.4.2",
+    "pwa": "^1.9.7"
   },
   "devDependencies": {
     "@adobe/apollo-link-mutation-queue": "~1.0.2",
@@ -137,7 +138,7 @@
   },
   "pwa-studio": {
     "targets": {
-      "intercept": "src/targets/local-intercept"
+      "intercept": "src/targets/intercept"
     }
   }
 }
