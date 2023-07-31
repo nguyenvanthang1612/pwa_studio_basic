@@ -23,7 +23,7 @@
     "storybook": "start-storybook -p 9001 -c src/.storybook",
     "storybook:build": "build-storybook -c src/.storybook -o storybook-dist"
   },
-  "main": "src/index.js",
+  "main": "src/components/PlaceholderImage/placeholderImage.js",
   "browser": {
     "@magento/venia-drivers": "src/drivers"
   },
@@ -89,6 +89,7 @@
     "lodash.get": "~4.4.2",
     "lodash.over": "~4.7.0",
     "lodash.set": "~4.3.2",
+    "m246-pwa": "link:/var/www/html/m246-pwa",
     "memoize-one": "~5.0.0",
     "memory-fs": "~0.4.1",
     "node-fetch": "~2.3.0",
@@ -137,7 +138,7 @@
   },
   "pwa-studio": {
     "targets": {
-      "intercept": "src/targets/local-intercept"
+      "intercept": "src/targets/intercept"
     }
   }
 }
