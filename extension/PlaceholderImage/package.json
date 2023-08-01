@@ -1,0 +1,17 @@
+{
+  "name": "PlaceholderImage",
+  "version": "1.0.0",
+  "main": "src/components/PlaceholderImage/placeholderImage.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "@magento/pwa-buildpack": "~11.4.2",
+    "@magento/venia-ui": "~10.2.0",
+    "react": "~17.0.1"
+  },
+  "pwa-studio": {
+    "targets": {
+      "intercept": "src/targets/intercept"
+    }
+  }
+}
+

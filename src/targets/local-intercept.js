@@ -1,10 +1,23 @@
 module.exports = (targets) => {
-    targets.of("@magento/venia-ui").routes.tap((routes) => {
-        routes.push({
-            name: "MyGreetingRoute",
-            pattern: "/greeting/:who?",
-            path: require.resolve("../components/GreetingPage/greetingPage.js"),
+    const buildpackTargets = targets.of("@magento/pwa-buildpack");
+
+    buildpackTargets.envVarDefinitions.tap((defs) => {
+        defs.sections.push({
+            name: "PlaceholderImage settings",
+            variables: [
+                {
+                    name: "IMAGE_PLACEHOLDER_SERVICE_URL",
+                    type: "str",
+                    desc: "Service URL for image placeholders",
+                },
+            ],
         });
-        return routes;
+    });
+
+    buildpackTargets.specialFeatures.tap((featuresByModule) => {
+        featuresByModule["PlaceholderImage"] = {
+            esModules: true,
+        };
     });
 };
+
