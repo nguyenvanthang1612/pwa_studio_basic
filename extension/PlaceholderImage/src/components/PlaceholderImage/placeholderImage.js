@@ -12,7 +12,8 @@ const PlaceholderImage = (props) => {
 
   const finalUrl = urlTemplate.replace("${w}", width).replace("${h}", height);
 
-  return <img src={finalUrl} />;
+  // return <img src={finalUrl} />;
+    return '1';
 };
 
 export default PlaceholderImage;

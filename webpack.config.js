@@ -1,5 +1,6 @@
 const {configureWebpack, graphQL} = require('@magento/pwa-buildpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require('webpack');
 const fs = require('fs');
 const {promisify} = require('util');
@@ -125,7 +126,10 @@ module.exports = async env => {
             ),
             __DEV__: process.env.NODE_ENV !== 'production'
         }),
-        new HTMLWebpackPlugin(htmlWebpackConfig)
+        new HTMLWebpackPlugin(htmlWebpackConfig),
+        new CopyPlugin({
+            patterns: [{from: 'my-static-assets', to: 'my-static-assets'}]
+        })
     ];
 
     config.module.rules.push({
@@ -202,3 +206,23 @@ module.exports = async env => {
 
     return [config];
 };
+
+// module.exports = {
+//     // Other webpack configuration options...
+//     module: {
+//         rules: [
+//             {
+//                 test: /\.(png|jpe?g|gif|svg)$/i,
+//                 use: [
+//                     {
+//                         loader: 'file-loader',
+//                         options: {
+//                             // Configure options for the loader if needed
+//                         },
+//                     },
+//                 ],
+//             },
+//             // Other rules for different file types...
+//         ],
+//     },
+// };
