@@ -1,0 +1,10 @@
+{
+  "name": "tagList",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "@magento/venia-ui": "^10.2.0",
+    "react": "^18.2.0"
+  }
+}
