@@ -1,0 +1,26 @@
+{
+  "name": "CustomEvent",
+  "version": "1.0.0",
+  "main": "./src/main.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": " "
+  },
+  "dependencies": {
+    "@adobe/magento-storefront-event-collector": "~1.3.1",
+    "@adobe/magento-storefront-events-sdk": "~1.3.1",
+    "@magento/experience-platform-connector": "^1.0.5"
+  },
+  "devDependencies": {},
+  "peerDependencies": {
+    "@apollo/client": "~3.5.0",
+    "@magento/peregrine": "~13.1.1",
+    "@magento/pwa-buildpack": "~11.4.2",
+    "react": "~17.0.1"
+  },
+  "pwa-studio": {
+    "targets": {
+      "intercept": "./intercept"
+    }
+  }
+}
